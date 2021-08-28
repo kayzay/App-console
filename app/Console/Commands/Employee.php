@@ -20,8 +20,14 @@ class Employee extends Command
      *
      * @var string
      */
-    protected $description = "Describe the skill of the employee. Command: employee {type}
-                               - {type} type it is type employee {programmer, designer,manager,tester}";
+    protected $description = sprintf(
+                                "Describe the skill of the employee. Command: employee {type}
+                                    - {type} type it is type employee {%s, %s, %s, %s}",
+                                    EmployeeFactory::Programmer
+                                    , EmployeeFactory::Designer
+                                    , EmployeeFactory::Manager
+                                    , EmployeeFactory::Tester
+                            );
 
     /**
      * Create a new command instance.

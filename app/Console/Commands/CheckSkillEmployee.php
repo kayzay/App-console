@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Console\Employee\EmployeeFactory;
 use App\Console\Employee\Interfaces\IEmployee;
+use App\Console\Employee\Interfaces\Skill;
 use Illuminate\Console\Command;
 
 class CheckSkillEmployee extends Command
@@ -20,10 +21,21 @@ class CheckSkillEmployee extends Command
      *
      * @var string
      */
-    protected $description = "Check skill employee. Command: employee:can {type} {skill}
-                               - {type} - is the  employee list {programmer, designer, manager, tester}
+    protected $description = sprintf(
+                            "Check skill employee. Command: employee:can {type} {skill}
+                               - {type} - is the  employee list {%s, %s, %s, %s}
                                - {skill} - is the employee able to perform this skill
-                               - skill list {writeCode, testTheCode, communicateWithTheManager, draw, setTask}";
+                               - skill list {%s, %s, %s, %s, %s}",
+                            EmployeeFactory::Programmer
+                            , EmployeeFactory::Designer
+                            , EmployeeFactory::Manager
+                            , EmployeeFactory::Tester
+                            , Skill::COMMAND_SKILL_NAME_WRITE_CODE 
+                            , Skill::COMMAND_SKILL_NAME_TEST_CODE
+                            , Skill::COMMAND_SKILL_NAME_COMMUNICATE
+                            , Skill::COMMAND_SKILL_NAME_DRAW
+                            , Skill::COMMAND_SKILL_NAME_SET_TASK
+                        );
 
     /**
      * Create a new command instance.

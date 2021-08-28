@@ -10,11 +10,17 @@ use App\Console\Employee\Interfaces\IEmployee;
 class EmployeeFactory
 {
 
+    const Programmer = 'programmer';
+    const Designer = 'designer';
+    const Manager = 'manager';
+    const Tester = 'tester';
+
+
     private $employeeList = [
-        'programmer' => Programmer::class
-        , 'designer' => Designer::class
-        , 'manager' => Manager::class
-        , 'tester' => Tester::class
+        self::Programmer => Programmer::class
+        , self::Designer  => Designer::class
+        , self::Manager => Manager::class
+        , self::Tester => Tester::class
     ];
 
     private $item = null;
