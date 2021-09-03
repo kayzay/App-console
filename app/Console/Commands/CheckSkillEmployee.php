@@ -21,7 +21,17 @@ class CheckSkillEmployee extends Command
      *
      * @var string
      */
-    protected $description = sprintf(
+    protected $description = '';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->description = sprintf(
                             "Check skill employee. Command: employee:can {type} {skill}
                                - {type} - is the  employee list {%s, %s, %s, %s}
                                - {skill} - is the employee able to perform this skill
@@ -36,15 +46,6 @@ class CheckSkillEmployee extends Command
                             , Skill::COMMAND_SKILL_NAME_DRAW
                             , Skill::COMMAND_SKILL_NAME_SET_TASK
                         );
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
     }
 
     /**

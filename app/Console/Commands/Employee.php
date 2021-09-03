@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Console\Employee\EmployeeFactory;
-use App\Console\Employee\Interfaces\IEmployee;
 use Illuminate\Console\Command;
 
 class Employee extends Command
@@ -20,14 +19,7 @@ class Employee extends Command
      *
      * @var string
      */
-    protected $description = sprintf(
-                                "Describe the skill of the employee. Command: employee {type}
-                                    - {type} type it is type employee {%s, %s, %s, %s}",
-                                    EmployeeFactory::Programmer
-                                    , EmployeeFactory::Designer
-                                    , EmployeeFactory::Manager
-                                    , EmployeeFactory::Tester
-                            );
+    protected $description = "";
 
     /**
      * Create a new command instance.
@@ -36,6 +28,14 @@ class Employee extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->description = sprintf(
+                                "Describe the skill of the employee. Command: employee {type}
+                                    - {type} type it is type employee {%s, %s, %s, %s}",
+                                    EmployeeFactory::Programmer
+                                    , EmployeeFactory::Designer
+                                    , EmployeeFactory::Manager
+                                    , EmployeeFactory::Tester
+                            );
     }
 
     /**
@@ -44,7 +44,7 @@ class Employee extends Command
      */
     public function handle()
     {
-        /**@var $employee IEmployee; **/
+       
         $employee = (new EmployeeFactory($this->argument('type')))->getEmployee();
 
         if ($employee !== null) {
